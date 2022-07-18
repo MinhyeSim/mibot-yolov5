@@ -7,7 +7,7 @@ import json
 
 @st.cache(allow_output_mutation=True)
 def cached_model():
-    model = SentenceTransformer('mibot_simple_chatbot_test')
+    model = SentenceTransformer('jhgan/ko-sroberta-multitask')
     return model
 
 @st.cache(allow_output_mutation=True)
@@ -29,7 +29,7 @@ if 'past' not in st.session_state:
     st.session_state['past'] = []
 
 with st.form('form', clear_on_submit=True):
-    user_input = st.text_input('당신: ', '')
+    user_input = st.text_input('You: ', '')
     submitted = st.form_submit_button('전송')
 
 if submitted and user_input:
