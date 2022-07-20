@@ -7,6 +7,9 @@ import gluonnlp as nlp
 import numpy as np
 from tqdm import tqdm, tqdm_notebook
 import pandas as pd
+import os
+import sys
+
 
 #kobert
 from kobert.utils import get_tokenizer
@@ -16,15 +19,15 @@ from kobert.pytorch_kobert import get_pytorch_kobert_model
 from transformers import AdamW
 from transformers.optimization import get_cosine_schedule_with_warmup
 
+
+
 #GPU 사용
 device = torch.device("cuda:0")
 
 #BERT 모델, Vocabulary 불러오기
 bertmodel, vocab = get_pytorch_kobert_model()
 
-
 chatbot_data = pd.read_excel('한국어_단발성_대화_데이터셋.xlsx')
-
 chatbot_data.sample(n=10)
 
 chatbot_data.loc[(chatbot_data['Emotion'] == "공포"), 'Emotion'] = 0  #공포 => 0

@@ -1,11 +1,16 @@
 from gtts import gTTS #gtts 라이브러리에서 gTTS만 사용 하겠다.
 from playsound import playsound
 
-text = "안녕하세요. 저는 당신의 미봇이에요."
+class Solution:
 
-tts = gTTS(text = text, lang="ko")
-tts.save(r"nlp\hi.mp3")
+    def __init__(self):
+    
+        self.text = "진영아 안녕"
+        self.tts = gTTS(text = self.text, lang="ko")
+        self.tts.save(r"C:\Users\bitcamp\mibot\mibot-yolov5\yolov5\tts_test\hi.mp3")
+    
+    def main(self):
+        return playsound(r"C:\Users\bitcamp\mibot\mibot-yolov5\yolov5\tts_test\hi.mp3")
 
-playsound(r"nlp\hi.mp3")
-
-# 22.07.20 미션 : oop로 전환하기 => 추후 장고로 업로드할것이다.
+if __name__ == "__main__": 
+    Solution().main()

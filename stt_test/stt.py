@@ -8,9 +8,8 @@ from yaml import safe_dump_all
 
 def speak(text):
     tts = gTTS(text=text, lang="ko")
-    filename = "voice.mp3"
-    tts.save(filename)
-    playsound.playsound(filename)
+    tts.save(r"stt_test\voice.mp3")
+    playsound(r"stt_test\voice.mp3")
 
 def get_audio():
     r = sr.Recognizer()
@@ -25,7 +24,7 @@ def get_audio():
             print("Exception: " + str(e))
     return said 
 
-speak("하이하이")
+#speak("하이하이")
 text = get_audio()
 
 if "안녕" in text:
