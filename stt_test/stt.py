@@ -1,8 +1,6 @@
 from email.mime import audio
 import speech_recognition as sr
 from gtts import gTTS
-import os
-import time
 import playsound
 from yaml import safe_dump_all
 
@@ -31,7 +29,7 @@ class Solution:
         return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\bye.mp3")
 
     
-
+    ##
     def get_audio(self):
         r = sr.Recognizer() #음성 인식
         with sr.Microphone() as source: #마이크로폰을 소스로 받아들여 
@@ -56,7 +54,7 @@ class Solution:
             elif "힘들어" in self.text:
                 self.speak2()                
             elif "잘가" in self.text:
-                self.speak4()
+                self.speak4()   
                 break
     
 if __name__ == "__main__": 
