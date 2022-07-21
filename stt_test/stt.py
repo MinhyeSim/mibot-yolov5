@@ -13,17 +13,17 @@ class Solution:
         pass
     
     def save_file(self):
-        tts = gTTS(text = "다음에 또 만나요", lang="ko")
-        tts.save(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\bye.mp3")
+        tts = gTTS(text = "그랬군요 기분이 좋아지도록 신나는 노래를 들려드릴게요", lang="ko")
+        tts.save(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\music.mp3")
 
     def speak(self):       
         return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\mibot.mp3")
 
     def speak2(self):       
-        return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\music.mp3")
+        return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\talk.mp3")
 
     def speak3(self):       
-        return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\today.mp3")
+        return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\music.mp3")
 
     def speak4(self):       
         return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\bye.mp3")
@@ -50,9 +50,9 @@ class Solution:
         while 1:
             self.text = self.get_audio()
             if "안녕" in self.text:
-                self.speak3()
+                self.speak2()
             elif "힘들어" in self.text:
-                self.speak2()                
+                self.speak3()                
             elif "잘가" in self.text:
                 self.speak4()   
                 break
