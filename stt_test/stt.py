@@ -10,23 +10,31 @@ class Solution:
         #self.text = "말씀하세요"
         #self.tts = gTTS(text = self.text, lang="ko")
         #self.tts.save(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\voice.mp3")
-        pass
+        #self.path = "C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test"
+        self.path = "C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test"
     
     def save_file(self):
-        tts = gTTS(text = "그랬군요 기분이 좋아지도록 신나는 노래를 들려드릴게요", lang="ko")
-        tts.save(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\music.mp3")
+        tts = gTTS(text = "저는 미봇이에요, 당신의 이야기를 들려주세요", lang="ko")
+        tts.save(f"{self.path}/mibot.mp3")
 
     def speak(self):       
-        return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\mibot.mp3")
+        return playsound.playsound(f"{self.path}/mibot.mp3") #저는 미봇이에요, 당신의 이야기를 들려주세요
 
     def speak2(self):       
-        return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\talk.mp3")
+        return playsound.playsound(f"{self.path}/rest.mp3") #너무 힘들 때는 잠깐의 휴식이 도움 돼요
 
     def speak3(self):       
-        return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\music.mp3")
+        return playsound.playsound(f"{self.path}/music.mp3") #음악을 듣는 건 어떠세요? 기분에 맞는 음악을 추천해 드릴게요.
 
     def speak4(self):       
-        return playsound.playsound(r"C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test\bye.mp3")
+        return playsound.playsound(f"{self.path}/kobert.mp3") # 현재 기분은 어떤 상태인가요?
+    
+    def speak5(self):       
+        return playsound.playsound(f"{self.path}/depressed.mp3") # 우울하시군요, 비투비의 괜찮아요를 들려 드릴게요
+    
+    def speak6(self):       
+        return playsound.playsound(f"{self.path}/bye.mp3") # 당신은 충분히 잘하고 있어요. 남은 하루도 행복하게 보내길 바래요
+    
 
     
     ##
@@ -45,22 +53,29 @@ class Solution:
 
     def stt(self):
         self.speak()
-        self.text = self.get_audio()
-    
+           
         while 1:
             self.text = self.get_audio()
-            if "안녕" in self.text:
+            if "스트레스" in self.text:
                 self.speak2()
-            elif "힘들어" in self.text:
+            elif "휴식" in self.text:
                 self.speak3()                
-            elif "잘가" in self.text:
-                self.speak4()   
+            elif "음악" in self.text:
+                self.speak4()
+            elif "우울해" in self.text:
+                self.speak5()
+            elif "종료" in self.text:
+                self.speak6()   
                 break
     
 if __name__ == "__main__": 
     #Solution().save_file()
     #Solution().speak()
-    #Solution().get_audio()
+    #Solution().speak2()
+    #Solution().speak3()
+    #Solution().speak4()
+    #Solution().speak5()
+    #Solution().speak6()
     Solution().stt()
 
 
