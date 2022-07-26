@@ -14,26 +14,26 @@ class Solution:
         self.path = "C:/Users/bitcamp/mibot/mibot-yolov5/yolov5/stt_test"
     
     def save_file(self):
-        tts = gTTS(text = "저는 미봇이에요, 당신의 이야기를 들려주세요", lang="ko")
-        tts.save(f"{self.path}/mibot.mp3")
+        tts = gTTS(text = "슬픈 기분을 위해 비투비의 괜찮아요를 들려 드릴게요", lang="ko")
+        tts.save(f"{self.path}/play.mp3") 
 
-    def speak(self):       
-        return playsound.playsound(f"{self.path}/mibot.mp3") #저는 미봇이에요, 당신의 이야기를 들려주세요
+    def mibot_speak(self):       
+        return playsound.playsound(f"{self.path}/mibot.mp3") 
 
-    def speak2(self):       
-        return playsound.playsound(f"{self.path}/rest.mp3") #너무 힘들 때는 잠깐의 휴식이 도움 돼요
+    def bye_speak(self):       
+        return playsound.playsound(f"{self.path}/bye.mp3") 
 
-    def speak3(self):       
-        return playsound.playsound(f"{self.path}/music.mp3") #음악을 듣는 건 어떠세요? 기분에 맞는 음악을 추천해 드릴게요.
+    def music_speak(self):       
+        return playsound.playsound(f"{self.path}/kobert.mp3") 
 
-    def speak4(self):       
-        return playsound.playsound(f"{self.path}/kobert.mp3") # 현재 기분은 어떤 상태인가요?
+    def sad_speak1(self):       
+        return playsound.playsound(f"{self.path}/cheerup.mp3") 
     
-    def speak5(self):       
-        return playsound.playsound(f"{self.path}/depressed.mp3") # 우울하시군요, 비투비의 괜찮아요를 들려 드릴게요
+    def sad_speak2(self):       
+        return playsound.playsound(f"{self.path}/recommend.mp3")
     
-    def speak6(self):       
-        return playsound.playsound(f"{self.path}/bye.mp3") # 당신은 충분히 잘하고 있어요. 남은 하루도 행복하게 보내길 바래요
+    def sad_speak3(self):       
+        return playsound.playsound(f"{self.path}/play.mp3") 
     
 
     
@@ -48,35 +48,35 @@ class Solution:
                 said = r.recognize_google(audio, language='ko-KR')
                 print(said)
             except Exception as e:
-                print("Exception: " + str(e))
+                print("다시 말 하세요: " + str(e))
         return said 
 
-    def stt(self):
-        self.speak()
+    def user_sad(self):
+        self.mibot_speak()
            
         while 1:
             self.text = self.get_audio()
-            if "스트레스" in self.text:
-                self.speak2()
-            elif "휴식" in self.text:
-                self.speak3()                
-            elif "음악" in self.text:
-                self.speak4()
-            elif "우울해" in self.text:
-                self.speak5()
-            elif "종료" in self.text:
-                self.speak6()   
+            if "대화 종료" in self.text:
+                self.bye_speak()
+            elif "음악 추천" in self.text:
+                self.music_speak()                
+            elif "면접" in self.text:
+                self.sad_speak1()
+            elif "합격" in self.text:
+                self.sad_speak2()
+            elif "슬퍼" in self.text:
+                self.sad_speak3()   
                 break
     
 if __name__ == "__main__": 
-    #Solution().save_file()
-    #Solution().speak()
-    #Solution().speak2()
-    #Solution().speak3()
-    #Solution().speak4()
-    #Solution().speak5()
-    #Solution().speak6()
-    Solution().stt()
+    Solution().save_file()
+    #Solution().mibot_speak()
+    #Solution().bye_speak()
+    #Solution().music_speak()
+    #Solution().sad_speak1()
+    #Solution().sad_speak2()
+    #Solution().sad_speak3()
+    Solution().user_sad()
 
 
 
